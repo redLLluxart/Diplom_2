@@ -100,7 +100,7 @@ public class CreateOrderTest {
     @After
     public void tearDown() {
 
-        if (bearerToken == "") return;
+        if (bearerToken.equals("")) return;
         userClient.delete(bearerToken);
 
     }

@@ -65,7 +65,7 @@ public class GetOrderTest {
     @After
     public void tearDown() {
 
-        if (bearerToken == "") return;
+        if (bearerToken.equals("")) return;
         userClient.delete(bearerToken);
 
     }

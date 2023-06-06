@@ -20,10 +20,13 @@ public class LoginUserTest {
     private User user;
     private String bearerToken;
 
+    private ValidatableResponse responseRegister;
+
     @Before
     public void setUp() {
         user = getRandomUser();
         userClient = new UserClient();
+        responseRegister = userClient.register(user);
     }
 
     @Test
@@ -31,7 +34,6 @@ public class LoginUserTest {
     @DisplayName("Логин под существующим пользователем")
     @Description("Проверка авторизации под существующим пользователем")
     public void loginUser() {
-        ValidatableResponse responseRegister = userClient.register(user);
         bearerToken = responseRegister.extract().path("accessToken");
 
         ValidatableResponse responseLogin = userClient.login(user);
@@ -43,7 +45,6 @@ public class LoginUserTest {
     @DisplayName("Логин с неверным паролем")
     @Description("Проверка авторизации с неверным паролем")
     public void LoginUserWithWrongPass() {
-        ValidatableResponse responseRegister = userClient.register(user);
         bearerToken = responseRegister.extract().path("accessToken");
 
         user.setPassword("");
@@ -56,7 +57,6 @@ public class LoginUserTest {
     @DisplayName("Логин с неверным email")
     @Description("Проверка авторизации с неверным email")
     public void LoginUserWithWrongEmail() {
-        ValidatableResponse responseRegister = userClient.register(user);
         bearerToken = responseRegister.extract().path("accessToken");
 
         user.setEmail("");

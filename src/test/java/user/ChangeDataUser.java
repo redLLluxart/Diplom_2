@@ -34,27 +34,26 @@ public class ChangeDataUser {
         ValidatableResponse responseRegister = userClient.register(user);
         bearerToken = responseRegister.extract().path("accessToken");
 
-        User user2 = getRandomUser();
+        User secondUser = getRandomUser();
 
-        ValidatableResponse responsePatch = userClient.patch(user2, bearerToken);
+        ValidatableResponse responsePatch = userClient.patch(secondUser, bearerToken);
         responsePatch.assertThat().statusCode(SC_OK).body("success", is(true));
     }
 
     @Test
     @Epic(value = "User's test")
     @DisplayName("Изменение данных пользователя без авторизации")
-    @Description("Проверка изменения данных существующего пользователя без авторизацией")
+    @Description("Проверка изменения данных существующего пользователя без авторизации")
     public void changeDataUserWithoutAuthorization() {
         ValidatableResponse responseRegister = userClient.register(user);
-        bearerToken = "";
-
-        User user2 = getRandomUser();
-
-        ValidatableResponse responsePatch = userClient.patch(user2, bearerToken);
-        responsePatch.assertThat().statusCode(SC_UNAUTHORIZED).body("success", is(false))
-                .and().body("message", is("You should be authorised"));
 
         bearerToken = responseRegister.extract().path("accessToken");
+
+        User secondUser = getRandomUser();
+
+        ValidatableResponse responsePatch = userClient.patch(secondUser, bearerToken);
+        responsePatch.assertThat().statusCode(SC_UNAUTHORIZED).body("success", is(false))
+                .and().body("message", is("You should be authorised"));
     }
 
 
