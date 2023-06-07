@@ -44,7 +44,7 @@ public class LoginUserTest {
     @Epic(value = "User's test")
     @DisplayName("Логин с неверным паролем")
     @Description("Проверка авторизации с неверным паролем")
-    public void LoginUserWithWrongPass() {
+    public void loginUserWithWrongPass() {
         bearerToken = responseRegister.extract().path("accessToken");
 
         user.setPassword("");
@@ -56,7 +56,7 @@ public class LoginUserTest {
     @Epic(value = "User's test")
     @DisplayName("Логин с неверным email")
     @Description("Проверка авторизации с неверным email")
-    public void LoginUserWithWrongEmail() {
+    public void loginUserWithWrongEmail() {
         bearerToken = responseRegister.extract().path("accessToken");
 
         user.setEmail("");
