@@ -4,7 +4,7 @@
 ## 2. Задача проекта
 Требуется протестировать ручки API для [Stellar Burgers](https://stellarburgers.nomoreparties.site/).
 
-[Документация API](https://code.s3.yandex.net/qa-automation-engineer/java/cheatsheets/paid-track/diplom/api-documentation.pdf)
+[Документация API.](https://code.s3.yandex.net/qa-automation-engineer/java/cheatsheets/paid-track/diplom/api-documentation.pdf)
 
 ## 3. Используемые инструменты
 * IntelliJ IDEA Community Edition 2022.3.1
